@@ -10,12 +10,12 @@ policy_list = iam.list_policies(Scope='Local')['Policies']
 policy_arn = None
 
 for policy in policy_list:
-    if policy['PolicyName'] == 'interview_s3_read':
+    if policy['PolicyName'] == 'bucket_s3_read':
         policy_arn = policy['Arn']
         break
 
 if not policy_arn:
-    raise Exception("Policy 'interview_s3_read' not found.")
+    raise Exception("Policy 'bucket_s3_read' not found.")
 
 # Step 3: Get the default version of the policy
 version_id = iam.get_policy(PolicyArn=policy_arn)['Policy']['DefaultVersionId']
